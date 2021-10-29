@@ -1,14 +1,24 @@
 import { useState } from 'react'
 import { Button } from 'primereact/button'
-const LugarForm = () => {
+const LugarForm = (props) => {
     const [titulo, setTitulo] = useState('')
     const [foto, setFoto] = useState('')
     const [endereco, setEndereco] = useState('')
     const [descricao, setDescricao] = useState('')
+    //será chamada quando o form for submetido
     const submitForm = (e) => {
+        //evita que o form seja submetido
         e.preventDefault()
+        //constrói um lugar
+        const lugar = {
+            titulo, foto, endereco, descricao
+        }
+        props.onAdicionarLugar(lugar)
+
     }
+    //para limpar os campos
     const limparCampos = (e) => {
+         //evita que o form seja submetido
         e.preventDefault()
         setTitulo('')
         setFoto('')
@@ -16,11 +26,12 @@ const LugarForm = () => {
         setDescricao('')
         
     }
-
+    //vamos voltar para a página anterior aqui
     const cancelar = (e) => {
+         //evita que o form seja submetido
         e.preventDefault()
     }
-    return (
+    return (//continua no próximo bloco
         <form onSubmit={submitForm}>
             <div className="formgrid grid">
                 <div className="field col-12 lg:col-6">

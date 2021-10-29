@@ -4,11 +4,12 @@ const LugarLista = ({lugares}) => {
     
   
    return lugares.map(lugar => (
-        <LugarItem 
+        <LugarItem
+        key={lugar.id}
+        id={lugar.id} 
         titulo={lugar.titulo}
         foto={lugar.foto}
         endereco={lugar.endereco}
-        descricao={lugar.descricao}
     />
    ))
 }
